@@ -100,7 +100,10 @@ public class DynamicList<T> {
     //
     ListNode<T> getNode (int pos) {
         
-    }
+        Objects.checkIndex(pos, this.getSize() - 1);
+        
+        for 
+    } 
     //
     //T get (int pos)
     //
