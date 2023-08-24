@@ -15,7 +15,6 @@ public class DynamicList<T> {
             this.previous = null;
             this.data = data;
             this.next = null;
-
         }
     }
 
@@ -39,6 +38,17 @@ public class DynamicList<T> {
         return this.size;
     }
 
+    ListNode<T> getNode (int pos) {
+        
+        try {
+            Objects.checkIndex(pos, this.getSize() - 1);
+        } catch (IndexOutOfBoundsException e) {
+
+        }
+
+        return null;
+    }
+
     void add(T value) {
 
         if (this.isEmpty()) {
@@ -60,7 +70,7 @@ public class DynamicList<T> {
     T remove (int pos) {
 
         if (pos == 0) {
-
+            
             ListNode<T> oldBase = this.base;
             ListNode<T> newBase = this.base.next;
 
@@ -94,16 +104,10 @@ public class DynamicList<T> {
             }
 
         }
+        return null;
     }
     
     //T remove (ListNode<T> node)
-    //
-    ListNode<T> getNode (int pos) {
-        
-        Objects.checkIndex(pos, this.getSize() - 1);
-        
-        for 
-    } 
     //
     //T get (int pos)
     //
