@@ -24,7 +24,7 @@ public class StaticStack<T> {
 
             } catch(ArrayIndexOutOfBoundsException e) {
 
-                System.out.println("Impossível adicionar um dado, Array já está cheio! \n");
+                System.out.println("Impossível adicionar um dado, a Pilha já está cheio! \n");
             }
         }
     }
@@ -40,7 +40,7 @@ public class StaticStack<T> {
 
         } catch (ArrayIndexOutOfBoundsException e) {
 
-            System.out.println("Impossível retirar um dado, o Array já está vazio! \n");
+            System.out.println("Impossível retirar um dado, a Pilha já está vazia! \n");
             return null;
         }
     }
@@ -50,7 +50,7 @@ public class StaticStack<T> {
         @SuppressWarnings("unchecked")
 
         T[] newData = (T[]) new Object[this.data.length];
-        
+
         this.data = newData;
         this.top = -1;
     }
