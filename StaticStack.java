@@ -50,11 +50,7 @@ public class StaticStack<T> {
         @SuppressWarnings("unchecked")
 
         T[] newData = (T[]) new Object[this.data.length];
-
-        for (int i = 0; i != this.data.length; i++) {
-            newData[i] = null;
-        }
-
+        
         this.data = newData;
         this.top = -1;
     }
