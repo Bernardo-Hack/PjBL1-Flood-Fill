@@ -1,14 +1,16 @@
 public class StaticStack<T> {
-    private int top = -1;
-    private T[] data;
+    private int top = -1; //armazena a posição do ultímo dado inserido
+    private T[] data; //array genérico vazio
 
-    @SuppressWarnings("unchecked")
-    
+    @SuppressWarnings("unchecked") //Os avisos estavam irritando :p
+
+    //A função StaticStack cria a Pilha Estática
     StaticStack(int size) {
 
         this.data = (T[]) new Object[size];
     }
     
+    //A função push adiciona dados a pilha
     public void push(T data) {
         
         this.top++;
@@ -29,6 +31,7 @@ public class StaticStack<T> {
         }
     }
 
+    //A função pop remove o ultímo elemnto inserido e retorna o dado
     public T pop() {
 
         try {
@@ -45,6 +48,8 @@ public class StaticStack<T> {
         }
     }
 
+    /*A função clear tem como objetivo limpar a pilha, essa função inicializa um novo array 
+    genérico com o mesmo tamanho, porem com valores nulos*/
     public void clear() {
 
         @SuppressWarnings("unchecked")
@@ -55,6 +60,7 @@ public class StaticStack<T> {
         this.top = -1;
     }
 
+    //A função isFull retorna se a estrura esta cheia
     public boolean isFull() {
 
         if (top == this.data.length) {
@@ -65,6 +71,7 @@ public class StaticStack<T> {
         }
     }
 
+    //A função isEmpty retorna se a estrutura esta vazia
     public boolean isEmpty() {
 
         if (this.top == -1) {
@@ -75,6 +82,7 @@ public class StaticStack<T> {
         }
     }
 
+    //A função printStack foi criada para printar a stack bonitinho
     void printStack() {
         
         System.out.print("\n");
