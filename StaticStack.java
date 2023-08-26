@@ -58,11 +58,9 @@ public class StaticStack<T> {
     public boolean isFull() {
 
         if (top == this.data.length) {
-
             return true;
 
         } else {
-
             return false;
         }
     }
@@ -70,11 +68,9 @@ public class StaticStack<T> {
     public boolean isEmpty() {
 
         if (this.top == -1) {
-
             return true;
 
         } else {
-
             return false;
         }
     }
