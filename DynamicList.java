@@ -111,7 +111,33 @@ public class DynamicList<T> {
     //
     //T get (int pos)
     //
-    //void set (int pos, T value)
+    //Função que adiciona dados pelo indice
+    void set (int pos, T value){
+        if (pos == size){
+            if (this.isEmpty()) {
 
+            ListNode<T> firstNode = new ListNode<T>(value);
+            this.base = this.top = firstNode;
+            this.size = 1;
+
+            } else {
+
+                ListNode<T> newNode = new ListNode<T>(value);
+                newNode.previous = this.top;
+                this.top = newNode.previous.next = newNode;
+                this.size++;
+
+            }   
+        } else {
+            ListNode<T> newNode = new ListNode<T>(value);
+            
+            ListNode<T> returnNode;
+
+            
+
+            returnNode.previous = returnNode.next.previous;
+            returnNode.next = returnNode.previous.next;
+        }
+    }
 }
 
