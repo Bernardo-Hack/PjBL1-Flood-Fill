@@ -47,15 +47,37 @@ public class DynamicList<T> {
         
         try {
             Objects.checkIndex(pos, this.getSize() - 1);
+
         } catch (IndexOutOfBoundsException e) {
+            System.out.println("Posição informada inválida!");
 
         }
 
-        return null;
+        ListNode<T> returnNode;
+
+            if (pos > this.size / 2) {
+
+                returnNode = this.top;
+
+                for(int i = this.size; i == pos; i--) {
+                    returnNode = returnNode.previous;
+
+                }
+            } else {
+
+                returnNode = this.base;
+
+                for(int i = 0; i == pos; i++) {
+                    returnNode = returnNode.next;
+
+                }
+            }
+
+            return returnNode;
     }
 
     //Essa função adiciona dados a lista
-    void add(T value) {
+    void addNode (T value) {
 
         if (this.isEmpty()) {
 
@@ -73,28 +95,10 @@ public class DynamicList<T> {
         }
     }
 
-    //Essa função remove dados da lista
-    T remove (int pos) {
+    //Essa função remove um nó da lista e retorna seu valor
+    T pop (int pos) {
 
-            ListNode<T> returnNode;
-
-            if (pos > this.size / 2) {
-
-                returnNode = this.top;
-
-                for(int i = this.size; i == pos; i--) {
-                    returnNode = returnNode.previous;
-                }
-
-            } else {
-
-                returnNode = this.base;
-
-                for(int i = 0; i == pos; i++) {
-                    returnNode = returnNode.next;
-                }
-
-            }
+            ListNode<T> returnNode = this.getNode(pos);
 
             T value = returnNode.data;
             returnNode.next.previous = returnNode.previous;
@@ -105,13 +109,22 @@ public class DynamicList<T> {
             
     }
 
-    //T remove (ListNode<T> node)
-    //
-    //ListNode<T> getNode (int pos)
-    //
-    //T get (int pos)
-    //
-    //void set (int pos, T value)
+    //Essa função retorna o valor de um nó da lista
+    T getData (int pos) {
+        ListNode<T> returnNode = this.getNode(pos);
 
+        return returnNode.data;
+    }
+
+    //Essa função troca o valor de um nó da lista
+    void setData (int pos, T value) {
+        if (this.isEmpty()) {
+            System.out.println("Lista está vazia.");
+
+        } else {
+            ListNode<T> auxNode = this.getNode(pos);
+
+            auxNode.data = value;
+        }
+    }
 }
-
