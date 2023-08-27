@@ -3,19 +3,25 @@ import java.util.Objects;
 public class DynamicList<T> {
     ListNode<T> base;
     ListNode<T> top;
+    int lineLen;
     int size;
+
+    //Constructor da Lista
+    public DynamicList(int len) {
+        this.lineLen = len;
+    }
 
     //Subclasse dos nós
     private static class ListNode<T> {
 
-        ListNode<T> previous;
+        ListNode<T> top = null;
+        ListNode<T> previous = null;
+        ListNode<T> next = null;
+        ListNode<T> bottom = null;
         T data;
-        ListNode<T> next;
         
         public ListNode(T data) {
-            this.previous = null;
             this.data = data;
-            this.next = null;
         }
     }
 
@@ -85,11 +91,23 @@ public class DynamicList<T> {
             this.base = this.top = firstNode;
             this.size = 1;
 
-        } else {
+        } else if (this.size < this.lineLen) {
 
             ListNode<T> newNode = new ListNode<T>(value);
             newNode.previous = this.top;
             this.top = newNode.previous.next = newNode;
+            this.size++;
+
+        } else {
+
+            ListNode<T> newNode = new ListNode<T>(value);
+            
+            newNode.previous = this.top;
+            this.top = newNode.previous.next = newNode;
+
+            ListNode<T> auxNode = this.getNode(this.size - this.lineLen);
+            newNode.top = auxNode;
+            auxNode.bottom = newNode;
             this.size++;
 
         }
@@ -104,6 +122,27 @@ public class DynamicList<T> {
             returnNode.next.previous = returnNode.previous;
             returnNode.previous.next = returnNode.next;
             this.size--;
+
+            ListNode<T> auxNode = returnNode.next;
+
+            auxNode.top = returnNode.top;
+            auxNode.bottom = returnNode.bottom;
+            
+            while(true) {
+
+                auxNode = auxNode.next;
+
+                if(auxNode == null) {
+
+                    break;
+
+                } else {
+
+                    auxNode.top = auxNode.previous.top;
+                    auxNode.bottom = auxNode.previous.bottom;
+
+                }
+            }
 
             return value;
             
@@ -125,6 +164,22 @@ public class DynamicList<T> {
             ListNode<T> auxNode = this.getNode(pos);
 
             auxNode.data = value;
+        }
+    }
+
+    /* Essa função faz o print da matriz 
+    corretamente, baseado na variável {this.collumnLen} */
+    void print2DList() {
+        for (int i = this.lineLen; i < this.getSize(); i += this.lineLen) {
+
+            System.out.print("[");
+
+            for (int j = 0; j < i; j++) {
+                System.out.print(this.getData(j));
+            }
+
+            System.out.print("]/n");
+
         }
     }
 }
