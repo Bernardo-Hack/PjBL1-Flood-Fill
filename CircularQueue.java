@@ -28,14 +28,19 @@ public class CircularQueue<T> {
      
     public T remove() {
 
-        if (this.isEmpty()) {
+        try {
+        
+            T value = this.data[base];
+            this.data[base] = null;
+            this.base++;
+            return value;
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+
             System.out.println("Impossível retirar um dado, a fila já está vazia! \n");
-        } else {
-
-            // Código de retirar dado aqui.
-
+            return null;
         }
-        return null; // placeholder pro VScode não reclamar
+
     }
 
     public void clear() {
