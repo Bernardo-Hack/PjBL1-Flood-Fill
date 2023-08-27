@@ -57,7 +57,6 @@ public class DynamicList<T> {
         ListNode<T> returnNode;
 
             if (pos > this.size / 2) {
-
                 returnNode = this.top;
 
                 for(int i = this.size; i == pos; i--) {
@@ -65,7 +64,6 @@ public class DynamicList<T> {
 
                 }
             } else {
-
                 returnNode = this.base;
 
                 for(int i = 0; i == pos; i++) {
@@ -81,20 +79,17 @@ public class DynamicList<T> {
     void addNode (T value) {
 
         if (this.isEmpty()) {
-
             ListNode<T> firstNode = new ListNode<T>(value);
             this.base = this.top = firstNode;
             this.size = 1;
 
         } else if (this.size < this.lineLen) {
-
             ListNode<T> newNode = new ListNode<T>(value);
             newNode.previous = this.top;
             this.top = newNode.previous.next = newNode;
             this.size++;
 
         } else {
-
             ListNode<T> newNode = new ListNode<T>(value);
             
             newNode.previous = this.top;
@@ -110,7 +105,6 @@ public class DynamicList<T> {
 
     //Essa função remove um nó da lista e retorna seu valor
     T pop (int pos) {
-
             ListNode<T> returnNode = this.getNode(pos);
 
             T value = returnNode.data;
@@ -136,9 +130,7 @@ public class DynamicList<T> {
 
                 }
             }
-
             return value;
-            
     }
 
     //Essa função retorna o valor de um nó da lista
@@ -164,13 +156,12 @@ public class DynamicList<T> {
     corretamente, baseado na variável {this.collumnLen} */
     void print2DList() {
         for (int i = this.lineLen; i < this.size; i += this.lineLen) {
-
             System.out.print("[");
 
             for (int j = 0; j < i; j++) {
                 System.out.print(this.getData(j));
-            }
 
+            }
             System.out.print("]/n");
 
         }
