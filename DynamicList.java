@@ -5,6 +5,7 @@ public class DynamicList<T> {
     ListNode<T> top;
     int size;
 
+    //Subclasse dos nós
     private static class ListNode<T> {
 
         ListNode<T> previous;
@@ -18,6 +19,7 @@ public class DynamicList<T> {
         }
     }
 
+    //Essa função verifica se a lista esta vazia
     boolean isEmpty() {
         if (this.base == null && this.top == null) {
             return true;
@@ -26,6 +28,7 @@ public class DynamicList<T> {
         }
     }
 
+    //Essa função verifica se a lista esta cheia
     boolean isFull() {
         if (this.base != null && this.top != null && this.top != this.base) {
             return true;
@@ -34,10 +37,12 @@ public class DynamicList<T> {
         }
     }
 
+    //Essa função retorna o tamanho da lista
     int getSize() {
         return this.size;
     }
 
+    //Essa função pega o nó baseado na posição dele na lista
     ListNode<T> getNode (int pos) {
         
         try {
@@ -49,6 +54,7 @@ public class DynamicList<T> {
         return null;
     }
 
+    //Essa função adiciona dados a lista
     void add(T value) {
 
         if (this.isEmpty()) {
@@ -67,6 +73,7 @@ public class DynamicList<T> {
         }
     }
 
+    //Essa função remove dados da lista
     T remove (int pos) {
 
             ListNode<T> returnNode;
@@ -97,7 +104,7 @@ public class DynamicList<T> {
             return value;
             
     }
-    
+
     //T remove (ListNode<T> node)
     //
     //ListNode<T> getNode (int pos)
