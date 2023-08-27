@@ -162,7 +162,8 @@ public class DynamicList<T> {
             System.out.print("[");
 
             for (int j = 0; j < i; j++) {
-                System.out.print(" " + this.getData(j) + " ");
+                ListNode<T> auxNode = this.getNode(j);
+                System.out.print(" " + auxNode.data + " ");
 
             }
             System.out.print("]\n");
