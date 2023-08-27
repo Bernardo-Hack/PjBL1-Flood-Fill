@@ -8,7 +8,10 @@ public class DynamicList<T> {
 
     //Constructor da Lista
     public DynamicList(int len) {
+        this.base = null;
+        this.top = null;
         this.lineLen = len;
+        this.size = 0;
     }
 
     //Subclasse dos nós
