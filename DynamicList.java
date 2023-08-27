@@ -158,16 +158,21 @@ public class DynamicList<T> {
     /* Essa função faz o print da matriz 
     corretamente, baseado na variável {this.collumnLen} */
     void print2DList() {
-        for (int i = this.lineLen; i < this.size; i += this.lineLen) {
-            System.out.print("[");
-
-            for (int j = 0; j < i; j++) {
+/*         for (int j = 0; j < 100; j++) {
+                ListNode<T> auxNode = this.getNode(j);
+                System.out.print(" " + auxNode.data + " ");}*/
+//        for (int i = this.lineLen; i < this.size; i += this.lineLen) {
+            
+            for (int j = 0; j < 100; j++) {
                 ListNode<T> auxNode = this.getNode(j);
                 System.out.print(" " + auxNode.data + " ");
+                /*if(j % 10 == 0 && j != 0){
+                    System.out.print("]\n");
+                    System.out.print("[");
+                }*/
+            } 
+            
 
-            }
-            System.out.print("]\n");
-
-        }
+ //       }
     }
 }
