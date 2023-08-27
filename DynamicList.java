@@ -162,10 +162,10 @@ public class DynamicList<T> {
             System.out.print("[");
 
             for (int j = 0; j < i; j++) {
-                System.out.print(this.getData(j));
+                System.out.print(" " + this.getData(j) + " ");
 
             }
-            System.out.print("]/n");
+            System.out.print("]\n");
 
         }
     }
