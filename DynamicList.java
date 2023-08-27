@@ -43,16 +43,11 @@ public class DynamicList<T> {
         }
     }
 
-    //Essa função retorna o tamanho da lista
-    int getSize() {
-        return this.size;
-    }
-
     //Essa função pega o nó baseado na posição dele na lista
     ListNode<T> getNode (int pos) {
         
         try {
-            Objects.checkIndex(pos, this.getSize() - 1);
+            Objects.checkIndex(pos, this.size - 1);
 
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Posição informada inválida!");
@@ -129,7 +124,6 @@ public class DynamicList<T> {
             auxNode.bottom = returnNode.bottom;
             
             while(true) {
-
                 auxNode = auxNode.next;
 
                 if(auxNode == null) {
@@ -137,7 +131,6 @@ public class DynamicList<T> {
                     break;
 
                 } else {
-
                     auxNode.top = auxNode.previous.top;
                     auxNode.bottom = auxNode.previous.bottom;
 
@@ -170,7 +163,7 @@ public class DynamicList<T> {
     /* Essa função faz o print da matriz 
     corretamente, baseado na variável {this.collumnLen} */
     void print2DList() {
-        for (int i = this.lineLen; i < this.getSize(); i += this.lineLen) {
+        for (int i = this.lineLen; i < this.size; i += this.lineLen) {
 
             System.out.print("[");
 
