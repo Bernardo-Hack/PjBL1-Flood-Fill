@@ -20,7 +20,7 @@ public class CircularQueue<T> {
                 this.top = 0;
             }
             
-            base = (base + 1) % this.data.length;
+            base = move(base);
             this.data[base] = data;
 
         }
