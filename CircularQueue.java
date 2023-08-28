@@ -9,20 +9,36 @@ public class CircularQueue<T> {
         this.data = (T[]) new Object[size];
     }
 
+    public boolean isFull() {
+
+        if (this.top == this.base) {
+            return true;
+
+        } else {
+           return false;
+        }
+    }
+
     public void add(T data) {
 
-        if (this.isFull()) {
+        top = move(top);
+        if (isFull() == true) {
             System.out.println("Impossível adicionar um dado, a fila já está cheia! \n");
+            
         } else {
             // Código extremamente duvidoso cuidado!
-
             if (this.top == -1) {
                 this.top = 0;
+                this.data[top] = data;
+                this.top++;
+                
             }
-            
-            base = move(base);
-            this.data[base] = data;
-
+            else {
+                
+                this.data[top] = data;
+                this.top++;
+                
+            }
         }
     }
      
@@ -53,19 +69,7 @@ public class CircularQueue<T> {
         this.base = 0;
     }
     
-    public boolean isFull() {
-
-        if (this.top == this.base && this.base == this.data.length - 1) {
-            return true;
-
-          } else if (this.top == this.top + 1) {
-            return true;
-
-          } else {
-            return false;
-
-          }
-    }
+    
 
     public boolean isEmpty() {
 
@@ -80,12 +84,22 @@ public class CircularQueue<T> {
     
     private int move(int pos) {
 
-        if (pos + 1 == this.data.length) {
+        if (pos + 1 == this.data.length + 1) {
             return 0;
 
         } else {
             return pos++;
+        }
+    }
+
+    void printQueue() {
+        
+        System.out.print("\n");
+        for(int i = 0; i < this.data.length; i++) {
+
+            System.out.println(this.data[i]);
 
         }
+        System.out.print("\n");
     }
 }
