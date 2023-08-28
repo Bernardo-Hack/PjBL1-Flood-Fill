@@ -3,16 +3,33 @@ public class MainDynamicList {
         
         DynamicList<Integer> ble = new DynamicList<>(10);
 
-        for(int i = 0; i < 100; i++){
-             if(i % 9 == 0 && i != 0){
-                ble.addNode(0);               
-            }else{
-                ble.addNode(3);  
-            }
-            
-        } //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
-        ble.print2DList();
-
+        ble.addNode(1);
+        System.out.println(ble.getData(0));
+        
+        ble.addNode(2);
+        System.out.println(ble.getData(1));
+        
+        ble.addNode(3);
+        System.out.println(ble.getData(2));
+        
+        ble.addNode(4);
+        System.out.println(ble.getData(3));
+        
+        ble.addNode(5);
+        System.out.println(ble.getData(4));
+        
+        ble.addNode(6);
+        System.out.println(ble.getData(5));
+        
+        ble.addNode(7);
+        System.out.println(ble.getData(6));
+        
+        ble.addNode(8);
+        System.out.println(ble.getData(7));
+        
+        ble.addNode(9);
+        System.out.println(ble.getData(8));
+        
+        System.out.println(ble.getNode(3));
     }
 }
