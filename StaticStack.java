@@ -1,17 +1,17 @@
-public class StaticStack<T> {
+public class StaticStack<Par> {
     private int top = -1; //armazena a posição do ultímo dado inserido
-    private T[] data; //array genérico vazio
+    private Par[] data; //array genérico vazio
 
     @SuppressWarnings("unchecked") //Os avisos estavam irritando :p
 
     //A função StaticStack cria a Pilha Estática
     StaticStack(int size) {
 
-        this.data = (T[]) new Object[size];
+        this.data = (Par[]) new Object[size];
     }
     
     //A função push adiciona dados a pilha
-    public void push(T data) {
+    public void push(Par data) {
         
         this.top++;
         if (this.isEmpty()) {
@@ -32,11 +32,11 @@ public class StaticStack<T> {
     }
 
     //A função pop remove o ultímo elemnto inserido e retorna o dado
-    public T pop() {
+    public Par pop() {
 
         try {
             
-            T value = this.data[top];
+            Par value = this.data[top];
             this.data[top] = null;
             this.top--;
             return value;
@@ -54,7 +54,7 @@ public class StaticStack<T> {
 
         @SuppressWarnings("unchecked")
 
-        T[] newData = (T[]) new Object[this.data.length];
+        Par[] newData = (Par[]) new Object[this.data.length];
 
         this.data = newData;
         this.top = -1;
@@ -83,6 +83,7 @@ public class StaticStack<T> {
     }
 
     //A função printStack foi criada para printar a stack bonitinho
+    //não vai funcionar quando valor é instanciado com Par
     void printStack() {
         
         System.out.print("\n");

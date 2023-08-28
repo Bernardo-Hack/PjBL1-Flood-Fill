@@ -1,12 +1,12 @@
-public class CircularQueue<T> {
+public class CircularQueue<Par> {
     private int top = -1;
     private int base = 0;
-    private T[] data;
+    private Par[] data;
 
     @SuppressWarnings("unchecked")
 
     public CircularQueue(int size) {
-        this.data = (T[]) new Object[size];
+        this.data = (Par[]) new Object[size];
     }
 
     public boolean isFull() {
@@ -30,7 +30,7 @@ public class CircularQueue<T> {
         }
     }
 
-    public void add(T data) {
+    public void add(Par data) {
 
         top = move(top);
         if (isFull() == true) {
@@ -53,8 +53,8 @@ public class CircularQueue<T> {
         }
     }
      
-    public T remove() { 
-        T value = this.data[base];
+    public Par remove() { 
+        Par value = this.data[base];
         if (value == null){
             System.out.println("Impossível remover um dado, a fila já esta vazia! ");
         }else{
@@ -72,7 +72,7 @@ public class CircularQueue<T> {
         
         @SuppressWarnings("unchecked")
 
-        T[] newData = (T[]) new Object[this.data.length];
+        Par[] newData = (Par[]) new Object[this.data.length];
         this.data = newData;
         this.top = -1;
         this.base = 0;

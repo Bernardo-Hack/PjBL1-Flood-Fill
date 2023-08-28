@@ -2,9 +2,9 @@ public class MainCircularQueue {
     
     public static void main(String[] args) {
 
-        CircularQueue<Integer> queue = new CircularQueue<>(10);
+        CircularQueue<Par> queue = new CircularQueue<Par>(10);
 
-       for(int i = 0; i < 10; i++){
+/*       for(int i = 0; i < 10; i++){
             queue.add(i);
         } 
         queue.printQueue();
@@ -25,6 +25,8 @@ public class MainCircularQueue {
         queue.add(50);
         //queue.add(70);
 
-        queue.printQueue();/* */
+        queue.printQueue(); 
+        
+        */
     }
 }
