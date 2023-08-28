@@ -1,4 +1,4 @@
-public class CircularQueue<Par> {
+public class CircularQueue <Par> {
     private int top = -1;
     private int base = 0;
     private Par[] data;
