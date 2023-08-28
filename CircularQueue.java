@@ -1,17 +1,16 @@
-public class CircularQueue <Par> {
+public class CircularQueue <T> {
     private int top = -1;
     private int base = 0;
-    private Par[] data;
+    private T[] data;
 
     @SuppressWarnings("unchecked")
 
     public CircularQueue(int size) {
-        this.data = (Par[]) new Object[size];
+        this.data = (T[]) new Object[size];
     }
     
     // Essa função retorna se a fila está cheia
     public boolean isFull() {
-
         if (this.top == this.base) {
             return true;
 
@@ -23,7 +22,6 @@ public class CircularQueue <Par> {
 
     // Essa função retorna se a fila está vazia
     public boolean isEmpty() {
-
         if (this.top == -1) {
             return true;
 
@@ -34,8 +32,7 @@ public class CircularQueue <Par> {
     }
 
     // Essa função adiciona um valor a fila
-    public void add(Par data) {
-
+    public void add(T data) {
         top = move(top);
         if (isFull() == true) {
             System.out.println("Impossível adicionar um dado, a fila já está cheia! \n");
@@ -55,10 +52,9 @@ public class CircularQueue <Par> {
         }
     }
     
-    // Essa função remove o valor da fila na posição base
-    public Par remove() {
-
-        Par value = this.data[base];
+    // Essa função remove o valor na posição base da fila 
+    public T remove() {
+        T value = this.data[base];
 
         if (value == null) {
             System.out.println("Impossível remover um dado, a fila já esta vazia! ");
@@ -76,12 +72,13 @@ public class CircularQueue <Par> {
         return value;
     }
 
-    // Essa função limpa os valores na pila
+    /* A função clear tem como objetivo limpar a fila, essa função o array data
+    um novo array genérico com o mesmo tamanho com valores nulos */
     public void clear() {
         
         @SuppressWarnings("unchecked")
 
-        Par[] newData = (Par[]) new Object[this.data.length];
+        T[] newData = (T[]) new Object[this.data.length];
         this.data = newData;
         this.top = -1;
         this.base = 0;
@@ -89,7 +86,6 @@ public class CircularQueue <Par> {
     
     // Essa função checa para qual posição o dado será posicionado
     private int move(int pos) {
-
         if (pos + 1 == this.data.length + 1) {
             return 0;
 
@@ -99,9 +95,9 @@ public class CircularQueue <Par> {
         }
     }
 
-    // Essa dunção faz o print da fila
+    /* A função printStack foi criada para printar a fila bonitinho
+    não vai funcionar quando valor é instanciado com T */
     void printQueue() {
-    
         System.out.print("\n");
         for(int i = 0; i < this.data.length; i++) {
             System.out.println(this.data[i]);
