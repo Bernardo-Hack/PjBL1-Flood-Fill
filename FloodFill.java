@@ -21,6 +21,7 @@ public class FloodFill{
             printa_image(image);
             Scanner scanner = new Scanner(System.in);
             System.out.print("Digite a linha inicial (0-9): ");
+            
             int startXvalue = scanner.nextInt();
             System.out.print("Digite a coluna inicial (0-9): ");
             int startYvalue = scanner.nextInt();
@@ -37,6 +38,7 @@ public class FloodFill{
 
             System.out.println("------------------------STACK------------------------");
             PaintStack(image, startXvalue, startYvalue, inicialColor, newColor);
+            scanner.close();
     }
 
     //Printizinho da "imagem"
@@ -66,59 +68,57 @@ public class FloodFill{
     public static void neighborQueue(int x,int y, int[][] image, CircularQueue queue){
         int xnovo = x - 1;
         int ynovo = y;
-        Par parnovo;
-        if ((xnovo >= 0 && xnovo < image.length && ynovo >= 0 && ynovo < image.length)== true){
-            parnovo = new Par(xnovo, ynovo);
-            queue.add(parnovo);
-        }
+        Par parnovo = new Par(xnovo, ynovo);
+        verificarQueue(xnovo, ynovo, image, queue, parnovo);
+
         xnovo = x + 1;
         ynovo = y;
-        if ((xnovo >= 0 && xnovo < image.length && ynovo >= 0 && ynovo < image.length)== true){
-            parnovo = new Par(xnovo, ynovo);
-            queue.add(parnovo);
-        }
+        verificarQueue(xnovo, ynovo, image, queue, parnovo);
+
         xnovo = x;
         ynovo = y - 1;
-        if ((xnovo >= 0 && xnovo < image.length && ynovo >= 0 && ynovo < image.length)== true){
-            parnovo = new Par(xnovo, ynovo);
-            queue.add(parnovo);
-        }
+        verificarQueue(xnovo, ynovo, image, queue, parnovo);
+
         xnovo = x;
         ynovo = y + 1;
+        verificarQueue(xnovo, ynovo, image, queue, parnovo);
+
+    }
+
+    public static void verificarQueue(int xnovo, int ynovo, int[][]image, CircularQueue queue, Par parnovo){
         if ((xnovo >= 0 && xnovo < image.length && ynovo >= 0 && ynovo < image.length)== true){
             parnovo = new Par(xnovo, ynovo);
-            queue.add(parnovo);
-        }
+            queue.add(parnovo);}
     }
 
     //Função que armazena os valores vizinhos do valor atual da Pilha
     public static void neighborStack(int x,int y, int[][] image, StaticStack stack){
         int xnovo = x - 1;
         int ynovo = y;
-        Par parnovo;
-        if ((xnovo >= 0 && xnovo < image.length && ynovo >= 0 && ynovo < image.length)== true){
-            parnovo = new Par(xnovo, ynovo);
-            stack.push(parnovo);
-        }
+        Par parnovo = new Par(xnovo, ynovo);
+
+        verificarStack(xnovo, ynovo, image, stack, parnovo);
+
         xnovo = x + 1;
         ynovo = y;
-        if ((xnovo >= 0 && xnovo < image.length && ynovo >= 0 && ynovo < image.length)== true){
-            parnovo = new Par(xnovo, ynovo);
-            stack.push(parnovo);
-        }
+
+        verificarStack(xnovo, ynovo, image, stack, parnovo);
+
         xnovo = x;
         ynovo = y - 1;
-        if ((xnovo >= 0 && xnovo < image.length && ynovo >= 0 && ynovo < image.length)== true){
-            parnovo = new Par(xnovo, ynovo);
-            stack.push(parnovo);
-            
-        }
+
+        verificarStack(xnovo, ynovo, image, stack, parnovo);
+
         xnovo = x;
         ynovo = y + 1;
+
+        verificarStack(xnovo, ynovo, image, stack, parnovo);
+    }
+
+    public static void verificarStack(int xnovo, int ynovo, int[][]image, StaticStack stack, Par parnovo){
         if ((xnovo >= 0 && xnovo < image.length && ynovo >= 0 && ynovo < image.length)== true){
             parnovo = new Par(xnovo, ynovo);
-            stack.push(parnovo);
-        }
+            stack.push(parnovo);}
     }
     
     //Função que cria a fila e par inicial, realiza comparação de cor para instruir o armazenamento de 
@@ -149,18 +149,22 @@ public class FloodFill{
         StaticStack<Par> stack = new StaticStack<>(200);
         stack.push(parinicio);
 
-        while (!stack.isEmpty()) {
-            Par paratual = stack.pop();
-            System.out.println(paratual);
-            int x = paratual.getV1();
-            int y = paratual.getV2();
+        if(newColor != inicialColor) {
+            while (!stack.isEmpty()) {
+                Par paratual = stack.pop();
+                
+                int x = paratual.getV1();
+                int y = paratual.getV2();
 
-            if (colorComparation(image, paratual, inicialColor, newColor)) {
-                neighborStack(x, y, image, stack);
-                image[x][y] = newColor;
-                System.out.println("---------------------------");
-                printa_image(image);  
+                if (colorComparation(image, paratual, inicialColor, newColor)) {
+                    neighborStack(x, y, image, stack);
+                    image[x][y] = newColor;
+                    System.out.println("---------------------------");
+                    printa_image(image);  
+                }
             }
+        }else{
+            System.out.println("A imagem já está preenchida cojm essa cor!");
         }
     }
 
