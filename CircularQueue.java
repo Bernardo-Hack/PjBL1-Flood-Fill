@@ -1,4 +1,4 @@
-public class CircularQueue<Par> {
+public class CircularQueue <Par> {
     private int top = -1;
     private int base = 0;
     private Par[] data;
@@ -8,7 +8,8 @@ public class CircularQueue<Par> {
     public CircularQueue(int size) {
         this.data = (Par[]) new Object[size];
     }
-
+    
+    // Essa função retorna se a fila está cheia
     public boolean isFull() {
 
         if (this.top == this.base) {
@@ -16,9 +17,11 @@ public class CircularQueue<Par> {
 
         } else {
            return false;
+
         }
     }
-    
+
+    // Essa função retorna se a fila está vazia
     public boolean isEmpty() {
 
         if (this.top == -1) {
@@ -30,6 +33,7 @@ public class CircularQueue<Par> {
         }
     }
 
+    // Essa função adiciona um valor a fila
     public void add(Par data) {
 
         top = move(top);
@@ -43,31 +47,36 @@ public class CircularQueue<Par> {
                 this.data[top] = data;
                 this.top++;
                 
-            }
-            else {
-                
+            } else {
                 this.data[top] = data;
                 this.top++;
                 
             }
         }
     }
-     
-    public Par remove() { 
+    
+    // Essa função remove o valor da fila na posição base
+    public Par remove() {
+
         Par value = this.data[base];
-        if (value == null){
+
+        if (value == null) {
             System.out.println("Impossível remover um dado, a fila já esta vazia! ");
-        }else{
-        this.data[base] = null;
-        this.base++;
-        if (base == top){
-            top = -1;
-            base = 0;
-        }
+
+        } else {
+            this.data[base] = null;
+            this.base++;
+
+            if (base == top) {
+                top = -1;
+                base = 0;
+
+            }
         }
         return value;
     }
 
+    // Essa função limpa os valores na pila
     public void clear() {
         
         @SuppressWarnings("unchecked")
@@ -78,7 +87,7 @@ public class CircularQueue<Par> {
         this.base = 0;
     }
     
-    
+    // Essa função checa para qual posição o dado será posicionado
     private int move(int pos) {
 
         if (pos + 1 == this.data.length + 1) {
@@ -86,14 +95,15 @@ public class CircularQueue<Par> {
 
         } else {
             return pos++;
+
         }
     }
 
+    // Essa dunção faz o print da fila
     void printQueue() {
-        
+    
         System.out.print("\n");
         for(int i = 0; i < this.data.length; i++) {
-
             System.out.println(this.data[i]);
 
         }
