@@ -137,7 +137,7 @@ public class FloodFill{
                 neighborQueue(x, y, image, queue);
                 image[x][y] = newColor;
                 System.out.println("---------------------------");
-                printa_image(image);  // Printa a matriz após pintar um pixel
+                printa_image(image);  
             }
         }
     }
@@ -159,7 +159,7 @@ public class FloodFill{
                 neighborStack(x, y, image, stack);
                 image[x][y] = newColor;
                 System.out.println("---------------------------");
-                printa_image(image);  // Printa a matriz após pintar um pixel
+                printa_image(image);  
             }
         }
     }
