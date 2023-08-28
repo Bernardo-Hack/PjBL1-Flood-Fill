@@ -2,7 +2,9 @@ import java.util.Scanner;
 
 public class FloodFill{
     public static void main(String[] args) {
-            int inicialColor;
+
+        //Criação da "imagem" com cor inicial
+        int inicialColor;
             int[][] image = {
                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 0},
                     {1, 1, 1, 1, 1, 1, 1, 1, 0, 1},
@@ -26,13 +28,18 @@ public class FloodFill{
             System.out.print("Digite o novo valor: ");
             int newColor = scanner.nextInt();
 
+//Caso queira executar a Fila
+
             //System.out.println("------------------------QUEUE------------------------");
             //PaintQueue(image, startXvalue, startYvalue, inicialColor, newColor);
+
+//Caso queira executar a Pilha
 
             System.out.println("------------------------STACK------------------------");
             PaintStack(image, startXvalue, startYvalue, inicialColor, newColor);
     }
-    
+
+    //Printizinho da "imagem"
     public static void printa_image( int[][] image){
         for ( int[] elemento: image) {
             for ( int pixel: elemento){
@@ -42,6 +49,8 @@ public class FloodFill{
         }
     }
     
+    //Compara a cor da cordenada a ser preenchida com a cor inicial
+    //caso não seja igual (no caso 0) ele bloqueia a passagem
     public static boolean colorComparation(int[][] image, Par paratual, int inicialColor, int cor_nova) {
         int x = paratual.getV1();
         int y = paratual.getV2();
@@ -53,6 +62,7 @@ public class FloodFill{
 
     }
 
+    //Função que armazena os valores vizinhos do valor atual da Fila
     public static void neighborQueue(int x,int y, int[][] image, CircularQueue queue){
         int xnovo = x - 1;
         int ynovo = y;
@@ -81,6 +91,7 @@ public class FloodFill{
         }
     }
 
+    //Função que armazena os valores vizinhos do valor atual da Pilha
     public static void neighborStack(int x,int y, int[][] image, StaticStack stack){
         int xnovo = x - 1;
         int ynovo = y;
@@ -110,6 +121,8 @@ public class FloodFill{
         }
     }
     
+    //Função que cria a fila e par inicial, realiza comparação de cor para instruir o armazenamento de 
+    //cordenada, e colore
     public static void PaintQueue(int[][] image, int startX, int startY, int inicialColor, int newColor) {
         Par parinicio = new Par(startX, startY);
         CircularQueue<Par> queue = new CircularQueue<>(200);
@@ -129,7 +142,8 @@ public class FloodFill{
         }
     }
 
-
+    //Função que cria a pilha e par inicial, realiza comparação de cor para instruir o armazenamento de 
+    //cordenada, e colore
     public static void PaintStack(int[][] image, int startX, int startY, int inicialColor, int newColor){
         Par parinicio = new Par(startX, startY);
         StaticStack<Par> stack = new StaticStack<>(200);

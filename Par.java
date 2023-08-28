@@ -1,4 +1,4 @@
-public class Par {
+public class Par {//Essa classe serve para indicar as coordenas
     
     private int v1;
     private int v2;
