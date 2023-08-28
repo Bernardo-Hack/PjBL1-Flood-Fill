@@ -30,52 +30,54 @@ public class DynamicList<T> {
 
     //Essa função verifica se a lista esta vazia
     boolean isEmpty() {
-        if (this.base == null && this.top == null) {
+        if (this.base == null || this.top == null || this.size == 0) {
             return true;
-        } else {
-            return false;
-        }
-    }
 
-    //Essa função verifica se a lista esta cheia
-    boolean isFull() {
-        if (this.base != null && this.top != null && this.top != this.base) {
-            return true;
         } else {
             return false;
+            
         }
     }
 
     //Essa função pega o nó baseado na posição dele na lista
     ListNode<T> getNode (int pos) {
         
-        try {
-            Objects.checkIndex(pos, this.size - 1);
+        if (pos == 0) {
+            return this.base;
 
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Posição informada inválida!");
+        } else if (pos == this.size - 1) {
+            return this.top;
 
-        }
+        } else {
 
-        ListNode<T> returnNode;
-
+            try {
+                Objects.checkIndex(pos, this.size - 1);
+                
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Posição informada inválida!");
+                
+            }
+            
+            ListNode<T> returnNode;
+            
             if (pos > this.size / 2) {
                 returnNode = this.top;
-
+                
                 for(int i = this.size; i == pos; i--) {
                     returnNode = returnNode.previous;
-
+                    
                 }
             } else {
                 returnNode = this.base;
-
+                
                 for(int i = 0; i == pos; i++) {
                     returnNode = returnNode.next;
-
+                    
                 }
             }
-
+            
             return returnNode;
+        }
     }
 
     //Essa função adiciona dados a lista
@@ -88,20 +90,23 @@ public class DynamicList<T> {
 
         } else if (this.size < this.lineLen) {
             ListNode<T> newNode = new ListNode<T>(value);
+
             newNode.previous = this.top;
-            this.top = newNode.previous.next = newNode;
+            this.top.next = newNode;
+
+            this.top = newNode;
             this.size++;
 
         } else {
             ListNode<T> newNode = new ListNode<T>(value);
             
             newNode.previous = this.top;
-            this.top = newNode.previous.next = newNode;
+            this.top.next = newNode;
 
-            ListNode<T> auxNode = this.getNode(this.size - this.lineLen);
-            newNode.top = auxNode;
-            auxNode.bottom = newNode;
-            this.size++;
+            //ListNode<T> auxNode = this.getNode(this.size - this.lineLen);
+            //newNode.top = auxNode;
+            //auxNode.bottom = newNode; 
+            //this.size++;
 
         }
     }
@@ -115,30 +120,31 @@ public class DynamicList<T> {
             returnNode.previous.next = returnNode.next;
             this.size--;
 
-            ListNode<T> auxNode = returnNode.next;
-
-            auxNode.top = returnNode.top;
-            auxNode.bottom = returnNode.bottom;
+            //ListNode<T> auxNode = returnNode.next;
+//
+            //auxNode.top = returnNode.top;
+            //auxNode.bottom = returnNode.bottom;
             
-            while(true) {
-                auxNode = auxNode.next;
-
-                if(auxNode == null) {
-
-                    break;
-
-                } else {
-                    auxNode.top = auxNode.previous.top;
-                    auxNode.bottom = auxNode.previous.bottom;
-
-                }
-            }
+            //while(true) {
+            //    auxNode = auxNode.next;
+//
+            //    if(auxNode == null) {
+//
+            //        break;
+//
+            //    } else {
+            //        auxNode.top = auxNode.previous.top;
+            //        auxNode.bottom = auxNode.previous.bottom;
+//
+            //    }
+            //}
             return value;
     }
 
     //Essa função retorna o valor de um nó da lista
     T getData (int pos) {
         ListNode<T> returnNode = this.getNode(pos);
+        System.out.println("pData: " + returnNode.previous + " - nData: " + returnNode.next);
 
         return returnNode.data;
     }
@@ -175,4 +181,8 @@ public class DynamicList<T> {
 
  //       }
     }
+
+    //void floodFill() ficou de next essa função (coringuei antes de terminar o trabalho)
 }
+
+// isso custou suor, lágrimas e possívelmente sangue - 23:24 27/08
