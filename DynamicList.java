@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class DynamicList<T> {
+public class DynamicList<T> { // Tentativa de fazer a atividade utilizando lista dinamica (n deu mto certo)
     ListNode<T> base;
     ListNode<T> top;
     int lineLen;
