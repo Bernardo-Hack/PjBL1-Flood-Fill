@@ -1,5 +1,21 @@
 # PjBL1-Flood-Fill
-PjBL1 da matéria de Resolução de Problemas Estruturados em Computação.
+- 🔭 PjBL1 da matéria de Resolução de Problemas Estruturados em Computação.
+- 🤔 Os codigos a seguir sao referentes ao PjBL1-Flood-Fill
+- 📫 
+<!--
+**gribeiro08/gribeiro08** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
-pipipi popopo
-num sei oq sei que la
+Here are some ideas to get you started:
+
+
+- 🌱 I’m currently learning ...
+- 👯 I’m looking to collaborate on ...
+- 🤔 I’m looking for help with ...
+- 💬 Ask me about ...
+- 📫 How to reach me: ...
+- 😄 Pronouns: ...
+- ⚡ Fun fact: ...
+-->
+
+
+ 
