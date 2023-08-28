@@ -18,6 +18,17 @@ public class CircularQueue<T> {
            return false;
         }
     }
+    
+    public boolean isEmpty() {
+
+        if (this.top == -1) {
+            return true;
+
+        } else {
+            return false;
+
+        }
+    }
 
     public void add(T data) {
 
@@ -27,7 +38,7 @@ public class CircularQueue<T> {
             
         } else {
             // Código extremamente duvidoso cuidado!
-            if (this.top == -1) {
+            if (isEmpty()) {
                 this.top = 0;
                 this.data[top] = data;
                 this.top++;
@@ -42,21 +53,19 @@ public class CircularQueue<T> {
         }
     }
      
-    public T remove() {
-
-        try {
-        
-            T value = this.data[base];
-            this.data[base] = null;
-            this.base++;
-            return value;
-
-        } catch (ArrayIndexOutOfBoundsException e) {
-
-            System.out.println("Impossível retirar um dado, a fila já está vazia! \n");
-            return null;
+    public T remove() { 
+        T value = this.data[base];
+        if (value == null){
+            System.out.println("Impossível remover um dado, a fila já esta vazia! ");
+        }else{
+        this.data[base] = null;
+        this.base++;
+        if (base == top){
+            top = -1;
+            base = 0;
         }
-
+        }
+        return value;
     }
 
     public void clear() {
@@ -69,18 +78,6 @@ public class CircularQueue<T> {
         this.base = 0;
     }
     
-    
-
-    public boolean isEmpty() {
-
-        if (this.top == -1) {
-            return true;
-
-        } else {
-            return false;
-
-        }
-    }
     
     private int move(int pos) {
 

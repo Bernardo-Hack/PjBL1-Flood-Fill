@@ -4,19 +4,27 @@ public class MainCircularQueue {
 
         CircularQueue<Integer> queue = new CircularQueue<>(10);
 
-        for(int i = 0; i < 10; i++){
+       for(int i = 0; i < 10; i++){
             queue.add(i);
-        }
-
+        } 
         queue.printQueue();
 
-        //queue.remove();
+        for(int i = 0; i < 10; i++){
+            queue.remove();
+        }
+        queue.printQueue();
+
+        queue.add(70);
+        queue.printQueue();
+
+        queue.remove();
+        queue.remove();
 
         queue.printQueue();
 
         queue.add(50);
-        queue.add(70);
+        //queue.add(70);
 
-        queue.printQueue();
+        queue.printQueue();/* */
     }
 }
